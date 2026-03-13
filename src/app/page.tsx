@@ -1,6 +1,6 @@
 import { prisma } from './lib/prisma'
 import Link from 'next/link'
-import Image from 'next/image' // Added Image import
+import Image from 'next/image'
 
 export const revalidate = 60
 
@@ -48,13 +48,13 @@ export default async function Home() {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {displayFeatured.map((product) => (
+            {displayFeatured.map((product: any) => (  // 🔥 FIX: Added :any
               <Link 
                 key={product.id} 
                 href={`/products/${product.id}`}
                 className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow"
               >
-                {/* Image placeholder - always show a placeholder */}
+                {/* Image placeholder */}
                 <div className="relative h-48 mb-4 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
                   <span className="text-gray-400">Product Image</span>
                 </div>
@@ -70,7 +70,7 @@ export default async function Home() {
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-8">Shop by Category</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {['Milk', 'Cheese', 'Yogurt', 'Butter'].map(cat => (
+              {['Milk', 'Cheese', 'Yogurt', 'Butter'].map((cat: string) => (  // 🔥 Optional: cat ka type bhi de sakte hain
                 <Link
                   key={cat}
                   href={`/categories/${cat.toLowerCase()}`}
@@ -95,13 +95,13 @@ export default async function Home() {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {newProducts.map((product) => (
+            {newProducts.map((product: any) => (  // 🔥 FIX: Added :any
               <Link
                 key={product.id}
                 href={`/products/${product.id}`}
                 className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow"
               >
-                {/* Image placeholder - always show a placeholder */}
+                {/* Image placeholder */}
                 <div className="relative h-48 mb-4 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
                   <span className="text-gray-400">Product Image</span>
                 </div>
