@@ -1,14 +1,14 @@
-// app/api/cart/[id]/route.ts
+// app/api/cart/[id]/route.ts ✅
 import { NextResponse } from 'next/server'
 import { prisma } from '@/app/lib/prisma'
 
-// GET - Get single cart item
+// ✅ GET - Perfect!
 export async function GET(
   request: Request,
-  { params }: { params: Promise<{ id: string }> }  // Changed to Promise
+  { params }: { params: Promise<{ id: string }> }  // ✅ Promise type
 ) {
   try {
-    const { id } = await params  // Added await
+    const { id } = await params  // ✅ await kiya
     const item = await prisma.cartItem.findUnique({
       where: { id },
       include: { product: true }
@@ -30,13 +30,13 @@ export async function GET(
   }
 }
 
-// PUT - Update quantity
+// ✅ PUT - Perfect!
 export async function PUT(
   request: Request,
-  { params }: { params: Promise<{ id: string }> }  // Changed to Promise
+  { params }: { params: Promise<{ id: string }> }  // ✅ Promise type
 ) {
   try {
-    const { id } = await params  // Added await
+    const { id } = await params  // ✅ await kiya
     const { quantity } = await request.json()
 
     if (quantity < 1) {
@@ -61,13 +61,13 @@ export async function PUT(
   }
 }
 
-// DELETE - Remove item
+// ✅ DELETE - Perfect!
 export async function DELETE(
   request: Request,
-  { params }: { params: Promise<{ id: string }> }  // Changed to Promise
+  { params }: { params: Promise<{ id: string }> }  // ✅ Promise type
 ) {
   try {
-    const { id } = await params  // Added await
+    const { id } = await params  // ✅ await kiya
     await prisma.cartItem.delete({
       where: { id }
     })
